@@ -21,12 +21,11 @@ class OpenCJDiscord:
 async def test(dc):
     # Set up the client socket
     print('Setting up client socket...')
-    socket_path = '/tmp/opencj_events_cod4'
-    client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.setblocking(False)
     try:
         loop = asyncio.get_event_loop()
-        await loop.sock_connect(client, socket_path)
+        await loop.sock_connect(client, ('127.0.0.1', 28961))
     except FileNotFoundError as fnfe:
         raise Exception('Could not connect to game server listener')
 
