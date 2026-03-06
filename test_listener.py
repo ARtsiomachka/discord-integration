@@ -62,7 +62,7 @@ async def main():
     task_listener.cancel()
 
     # Verify the data is as expected
-    expected_msg = '[Discord] test: this is an injected message'
+    expected_msg = '^8[^7Discord^8]^7 test: this is an injected message'
     if data != expected_msg:
         raise Exception(f'Expected:\n{expected_msg}\nGot\n{data}')
     else:
